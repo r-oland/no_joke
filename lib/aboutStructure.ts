@@ -1,12 +1,11 @@
 // The StructureResolver is how we're changing the DeskTool structure to linking to a single "Settings" document, instead of rendering "settings" in a list
-import { DocumentDefinition } from "sanity";
-import { StructureResolver } from "sanity/desk";
+import { DocumentDefinition } from 'sanity';
+import { StructureResolver } from 'sanity/desk';
 
 // like how "Post" and "Author" is handled.
-export const aboutStructure = (
-  typeDef: DocumentDefinition
-): StructureResolver => {
-  return (S) => {
+export const aboutStructure =
+  (typeDef: DocumentDefinition): StructureResolver =>
+  (S) => {
     // The `About` root list item
     const aboutListItem = // A singleton not using `documentListItem`
       S.listItem()
@@ -25,7 +24,6 @@ export const aboutStructure = (
     );
 
     return S.list()
-      .title("Content")
+      .title('Content')
       .items([aboutListItem, S.divider(), ...defaultListItems]);
   };
-};

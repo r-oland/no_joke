@@ -1,0 +1,86 @@
+// font
+$font: "Inter", sans-serif;
+$zen: "Zen Antique", serif;
+
+// font-sizes
+$font-h1: 40px;
+$font-h2: 24px;
+$font-h3: 18px;
+$font-large: 16px;
+$font-paragraph: 14px;
+$font-small: 12px;
+$font-extra-small: 10px;
+
+// font-weight
+$weight-normal: 300;
+$weight-semi-bold: 500;
+$weight-bold: 700;
+
+// colors
+$black: #182725;
+$grey: #969696;
+$off-white: #faf7f4;
+$white: #ffffff;
+$green: #3f6c5b;
+$green-light: #bdd3cc;
+$background: #f7f2ec;
+
+// media queries
+$phone: 525px;
+$tablet: 768px;
+$desktop: 1024px;
+$desktop-large: 1325px;
+$desktop-extra-large: 1500px;
+$desktop-huge: 2000px;
+
+// spacing
+$spacing1: 0.25rem;
+$spacing2: 0.5rem;
+$spacing3: 0.75rem;
+$spacing4: 1rem;
+$spacing5: 1.25rem;
+$spacing6: 1.5rem;
+$spacing7: 1.75rem;
+$spacing8: 2rem;
+$spacing9: 2.5rem;
+$spacing10: 3rem;
+$spacing11: 4rem;
+$spacing12: 6rem;
+$spacing13: 7rem;
+$spacing14: 8rem;
+$spacing15: 12rem;
+$spacing16: 16rem;
+$spacing17: 24rem;
+$spacing18: 30rem;
+$spacing19: 48rem;
+
+// Border
+$border-radius: 1px;
+$border: 1px solid $off-white;
+
+@mixin scrollBar {
+  /* Works on Firefox */
+  @supports (-moz-appearance: none) {
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: hsl(210, 15%, 18%, 0.5) transparent;
+    }
+  }
+
+  /* Works on Chrome && Edge */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    &::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: hsl(210, 15%, 18%, 0.5);
+      border-radius: 8px;
+    }
+  }
+}

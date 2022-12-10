@@ -1,7 +1,7 @@
-import { getPage } from "lib/sanity.client";
+import { getPage } from 'lib/sanity.client';
 
 export default async function Head() {
-  const page = await getPage("home");
+  const page = await getPage('home');
 
   return (
     <>

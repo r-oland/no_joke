@@ -1,4 +1,4 @@
-import "styles/globals.scss";
+import 'styles/App.scss';
 
 export default function RootLayout({
   children,
@@ -6,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="nl">
       <head />
       <body>{children}</body>
     </html>
