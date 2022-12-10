@@ -1,8 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+/* eslint-disable @next/next/no-img-element */
+// Components==============
+import { PortableText } from "@portabletext/react";
+import { getAbout, getIllustrations, getWork } from "lib/sanity.client";
+import { getSanityImage } from "lib/sanityImage";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "styles/Home.module.scss";
+// =========================
 
-export default function Home() {
+export default async function page() {
+  const work = await getWork();
+  const illustrations = await getIllustrations();
+  const about = await getAbout();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,14 +22,18 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <h1 className={styles.title}>{work?.[0].name}</h1>
+        <div className={styles.description}>
+          {illustrations.map((ill) => (
+            <img
+              key={ill.name}
+              src={getSanityImage(ill.illustration).width(200).url()}
+              alt={ill.illustration.caption}
+            />
+          ))}
+          <p>{about?.name}</p>
+          {!!about && <PortableText value={about?.description} />}
+        </div>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -60,12 +74,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
